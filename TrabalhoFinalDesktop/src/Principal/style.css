@@ -16,6 +16,7 @@ table-view, .tree-table-view {
     -fx-border-style: null;
     -fx-border-width: 0 0 2 0;
     -fx-background-color: transparent;
+    
 }
 
 .table-view .show-hide-columns-button, .tree-table-view .show-hide-columns-button
@@ -28,11 +29,13 @@ table-view, .tree-table-view {
 .tree-table-view .filler .label, .tree-table-view .column-drag-header .label
 {
     -fx-alignment: CENTER_LEFT;
+    -fx-text-fill: #377256;
 }
 
 .table-view .column-header-background, .tree-table-view .column-header-background
 {
     -fx-background-color: transparent;
+    
     
 }
 
@@ -47,6 +50,7 @@ table-view, .tree-table-view {
 .table-view{
     -fx-border-color: transparent;
     -fx-text-align: CENTER;
+    
 }
 #deleta{
     -fx-background-color: #E53935;//vermelho

@@ -16,6 +16,7 @@ import javafx.stage.Stage;
  * @author tuba1
  */
 public class InsereMain extends Application {
+    private static Stage stage;
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -25,6 +26,7 @@ public class InsereMain extends Application {
         
         stage.setScene(scene);
         stage.show();
+        setStage(stage);
     }
 
     /**
@@ -34,4 +36,11 @@ public class InsereMain extends Application {
         launch(args);
     }
     
+    public static Stage getStage(){
+        return stage;
+    }
+
+    private void setStage(Stage stage) {
+        InsereMain.stage = stage;
+    }
 }

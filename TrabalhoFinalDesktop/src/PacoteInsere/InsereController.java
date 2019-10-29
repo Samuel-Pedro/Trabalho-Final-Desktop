@@ -10,7 +10,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  *
@@ -19,12 +21,44 @@ import javafx.scene.control.Label;
 public class InsereController implements Initializable {
     
     @FXML
-    private Label label;
+    private TextField nomeInput;
+
+    @FXML
+    private Button botaoCancelar;
+
+    @FXML
+    private Label idDeptoLabel;
+
+    @FXML
+    private TextField idInput;
+
+    @FXML
+    private Label idLabel;
+
+    @FXML
+    private Button botaoSalvar;
+
+    @FXML
+    private TextField idDeptoInput;
+
+    @FXML
+    private TextField horasInput;
+
+    @FXML
+    private Label modalidadeLabel;
+
+    @FXML
+    private TextField modelidadeInput;
+
+    @FXML
+    private Label horasLabel;
+
+    @FXML
+    private Label nomeLabel;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    void acaoCancelar(ActionEvent event) {
+        fecha();
     }
     
     @Override
@@ -32,4 +66,7 @@ public class InsereController implements Initializable {
         // TODO
     }    
     
+    public void fecha(){
+        InsereMain.getStage().close();
+    }
 }
