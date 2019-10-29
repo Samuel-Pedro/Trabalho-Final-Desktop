@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="1006.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Principal.TableController">
+   <children>
+      <TableView fx:id="table" layoutX="30.0" layoutY="10.0" prefHeight="585.0" prefWidth="1014.0" style="-fx-border-color: #ffffff;" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columns>
+            <TableColumn fx:id="col_id" prefWidth="75.0" styleClass="coluna" text="ID" />
+            <TableColumn fx:id="col_idDepto" prefWidth="75.0" styleClass="coluna" text="ID-DEPTO" />
+            <TableColumn fx:id="col_nome" prefWidth="209.0" styleClass="coluna" text="NOME" />
+            <TableColumn fx:id="col_horas" prefWidth="133.0" styleClass="coluna" text="HORAS-TOTAL" />
+            <TableColumn fx:id="col_modalidade" prefWidth="130.0" styleClass="coluna" text="MODALIDADE" />
+            <TableColumn fx:id="col_funcoes" prefWidth="115.0" styleClass="coluna" text="FUNÇÕES" />
+            <TableColumn fx:id="col_funcoes1" prefWidth="115.0" styleClass="coluna" />
+            <TableColumn fx:id="col_funcoes2" prefWidth="115.0" styleClass="coluna" />
+         </columns>
+      </TableView>
+      <Button fx:id="adiciona" layoutX="890.0" layoutY="14.0" mnemonicParsing="false" onAction="#Insere" style="-fx-background-color: #29A58C;" text="ADICIONAR" textFill="WHITE" />
+   </children>
+</AnchorPane>
