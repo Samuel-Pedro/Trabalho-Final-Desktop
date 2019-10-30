@@ -28,7 +28,7 @@ table-view, .tree-table-view {
 .table-view .column-drag-header .label, .tree-table-view .column-header .label,
 .tree-table-view .filler .label, .tree-table-view .column-drag-header .label
 {
-    -fx-alignment: CENTER_LEFT;
+    -fx-alignment: CENTER;
     -fx-text-fill: #377256;
 }
 
@@ -53,16 +53,16 @@ table-view, .tree-table-view {
     
 }
 #deleta{
-    -fx-background-color: #E53935;//vermelho
+    -fx-background-color: #E53935;
     -fx-text-fill: white;
     
 }
 #edita{
-    -fx-background-color: #2C46A5;//azul escuro
+    -fx-background-color: #2C46A5;
     -fx-text-fill: white;
 
 }
 #info{
-    -fx-background-color: #00B0FF;//ciano
+    -fx-background-color: #00B0FF;
     -fx-text-fill: white;
 }
