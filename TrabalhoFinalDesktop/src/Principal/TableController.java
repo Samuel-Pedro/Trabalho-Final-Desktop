@@ -23,6 +23,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import PacoteInsere.InsereMain;
+import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.event.EventType;
 
 /**
  *
@@ -59,20 +64,31 @@ public class TableController implements Initializable{
         }
     }
     
-
-    static ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
-   
+    public static ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         consultarBD();
         criaTabela();
-        
     }
     public void refresh(){
-        oblist.clear();
+        //oblist.clear();
         consultarBD();
         criaTabela();
-        System.out.println("clicou");
+    }
+    
+   
+    
+    public void deleta(String id){
+         try {
+            Connection connection = DbConnector.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("delete " +
+                    "from cursos where id="+id);
+            stmt.execute();
+            stmt.close();
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
     }
     
     static public void consultarBD(){
@@ -81,6 +97,7 @@ public class TableController implements Initializable{
             
             ResultSet rs = con.createStatement().executeQuery("select * from cursos");
             oblist = FXCollections.observableArrayList();
+            
             while(rs.next()){
                 oblist.add(new ModelTable(rs.getString("id"),rs.getString("id-depto"),rs.getString("nome"),rs.getString("horas-total"),rs.getString("modalidade"),new Button("INFO"),new Button("EDITAR"),new Button("DELETAR")));
             }
@@ -89,8 +106,10 @@ public class TableController implements Initializable{
         } catch (SQLException ex) {
             Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     public void criaTabela(){
+        table.refresh();
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_idDepto.setCellValueFactory(new PropertyValueFactory<>("idDepto"));
         col_nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -100,6 +119,7 @@ public class TableController implements Initializable{
         col_funcoes1.setCellValueFactory(new PropertyValueFactory<>("edita"));
         col_funcoes2.setCellValueFactory(new PropertyValueFactory<>("deleta"));
         
+          
         table.setItems(oblist);
     }
 }

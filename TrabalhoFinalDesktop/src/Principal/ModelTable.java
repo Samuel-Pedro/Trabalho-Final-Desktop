@@ -5,7 +5,15 @@
  */
 package Principal;
 
+import PacoteDeletar.ControllerDeleta;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import PacoteDeletar.MainDeleta;
+import javafx.stage.Stage;
 
 /**
  *
@@ -14,6 +22,23 @@ import javafx.scene.control.Button;
 public class ModelTable {
     String id,idDepto,nome,horas,modalidade;
     Button deleta,edita,info;
+    boolean isCancela;
+
+    public boolean isIsCancela() {
+        return isCancela;
+    }
+
+    public void setIsCancela(boolean isCancela) {
+        this.isCancela = isCancela;
+    }
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+    int contador;
 
     public Button getDeleta() {
         return deleta;
@@ -51,7 +76,15 @@ public class ModelTable {
         this.deleta.setId("deleta");
         this.edita = edita;
         this.edita.setId("edita");
-        
+        deleta.setOnMouseClicked((MouseEvent event) -> {
+            MainDeleta mainDeleta = new MainDeleta();
+            ControllerDeleta.setId(id);
+            try {
+                mainDeleta.start(new Stage());
+            } catch (Exception ex) {
+                Logger.getLogger(ModelTable.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
     
     public String getId() {
@@ -93,4 +126,5 @@ public class ModelTable {
     public void setModalidade(String modalidade) {
         this.modalidade = modalidade;
     }
+   
 }

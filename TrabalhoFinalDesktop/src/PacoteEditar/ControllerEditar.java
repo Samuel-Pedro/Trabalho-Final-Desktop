@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PacoteInsere;
+package PacoteEditar;
 
 import Principal.DbConnector;
 import Principal.TableController;
@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
  *
  * @author tuba1
  */
-public class InsereController implements Initializable {
+public class ControllerEditar implements Initializable {
     
     @FXML
     private TextField nomeInput;
@@ -95,6 +95,6 @@ public class InsereController implements Initializable {
     }    
     
     public void fecha(){
-        InsereMain.getStage().close();
+        MainEditar.getStage().close();
     }
 }
