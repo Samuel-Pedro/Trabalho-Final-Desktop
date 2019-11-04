@@ -19,7 +19,15 @@ import javafx.scene.control.Label;
  * @author tuba1
  */
 public class ControllerDeleta implements Initializable {
-    static String id;
+    static String id,nome;
+
+    public static String getNome() {
+        return nome;
+    }
+
+    public static void setNome(String nome) {
+        ControllerDeleta.nome = nome;
+    }
 
     public static String getId() {
         return id;
@@ -33,6 +41,9 @@ public class ControllerDeleta implements Initializable {
 
     @FXML
     private Button deleteLabelConfirmar;
+    
+    @FXML
+    private Label text;
 
     @FXML
     void confirma(ActionEvent event) {
@@ -49,7 +60,7 @@ public class ControllerDeleta implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        text.setText("Você realmente deseja DELETAR o curso: "+ControllerDeleta.getNome());
     }  
     
     public void fecha(){

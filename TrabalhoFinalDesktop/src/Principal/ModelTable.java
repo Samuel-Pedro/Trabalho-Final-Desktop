@@ -13,6 +13,8 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import PacoteDeletar.MainDeleta;
+import PacoteEditar.ControllerEditar;
+import PacoteEditar.MainEditar;
 import javafx.stage.Stage;
 
 /**
@@ -21,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class ModelTable {
     String id,idDepto,nome,horas,modalidade;
-    Button deleta,edita,info;
+    Button deleta,edita;
     boolean isCancela;
 
     public boolean isIsCancela() {
@@ -56,22 +58,12 @@ public class ModelTable {
         this.edita = edita;
     }
 
-    public Button getInfo() {
-        return info;
-    }
-
-    public void setInfo(Button info) {
-        this.info = info;
-    }
-
-    public ModelTable(String id, String idDepto, String nome, String horas, String modalidade, Button info, Button edita,Button deleta){
+    public ModelTable(String id, String idDepto, String nome, String horas, String modalidade, Button edita,Button deleta){
         this.id = id;
         this.idDepto = idDepto;
         this.nome = nome;
         this.horas = horas;
         this.modalidade = modalidade;
-        this.info = info;
-        this.info.setId("info");
         this.deleta = deleta;
         this.deleta.setId("deleta");
         this.edita = edita;
@@ -79,8 +71,19 @@ public class ModelTable {
         deleta.setOnMouseClicked((MouseEvent event) -> {
             MainDeleta mainDeleta = new MainDeleta();
             ControllerDeleta.setId(id);
+            ControllerDeleta.setNome(nome);
             try {
                 mainDeleta.start(new Stage());
+            } catch (Exception ex) {
+                Logger.getLogger(ModelTable.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        edita.setOnMouseClicked((MouseEvent event) -> {
+            MainEditar mainEditar = new MainEditar();
+            ControllerEditar.setId(id);
+            try {
+                mainEditar.start(new Stage());
             } catch (Exception ex) {
                 Logger.getLogger(ModelTable.class.getName()).log(Level.SEVERE, null, ex);
             }

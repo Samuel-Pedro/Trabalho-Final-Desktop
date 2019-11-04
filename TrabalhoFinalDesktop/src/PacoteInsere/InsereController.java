@@ -72,16 +72,15 @@ public class InsereController implements Initializable {
 
             // cria um preparedStatement
             String sql = "insert into cursos" +
-                    " (`id`, `id-depto`, `nome`, `horas-total`, `modalidade`)" +
-                    " values (?,?,?,?,?)";
+                    " (`id-depto`, `nome`, `horas-total`, `modalidade`)" +
+                    " values (?,?,?,?)";
             PreparedStatement stmt = con.prepareStatement(sql);
 
             // preenche os valores
-            stmt.setString(1,idInput.getText());
-            stmt.setString(2,idDeptoInput.getText());
-            stmt.setString(3,nomeInput.getText());
-            stmt.setString(4,horasInput.getText());
-            stmt.setString(5,modalidadeInput.getText());
+            stmt.setString(1,idDeptoInput.getText());
+            stmt.setString(2,nomeInput.getText());
+            stmt.setString(3,horasInput.getText());
+            stmt.setString(4,modalidadeInput.getText());
             stmt.execute();
             stmt.close();
             con.close();

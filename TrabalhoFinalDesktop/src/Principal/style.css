@@ -28,7 +28,7 @@ table-view, .tree-table-view {
 .table-view .column-drag-header .label, .tree-table-view .column-header .label,
 .tree-table-view .filler .label, .tree-table-view .column-drag-header .label
 {
-    -fx-alignment: CENTER;
+    -fx-alignment: CENTER_LEFT;
     -fx-text-fill: #377256;
 }
 
@@ -49,7 +49,7 @@ table-view, .tree-table-view {
 }
 .table-view{
     -fx-border-color: transparent;
-    -fx-text-align: CENTER;
+    -fx-alignment: CENTER_LEFT;
     
 }
 #deleta{
@@ -61,8 +61,4 @@ table-view, .tree-table-view {
     -fx-background-color: #2C46A5;
     -fx-text-fill: white;
 
-}
-#info{
-    -fx-background-color: #00B0FF;
-    -fx-text-fill: white;
 }

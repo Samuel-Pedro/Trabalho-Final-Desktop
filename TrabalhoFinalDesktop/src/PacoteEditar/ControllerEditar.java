@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,7 +27,15 @@ import javafx.scene.control.TextField;
  * @author tuba1
  */
 public class ControllerEditar implements Initializable {
-    
+    static String id;
+
+    public static String getId() {
+        return id;
+    }
+
+    public static void setId(String id) {
+        ControllerEditar.id = id;
+    }
     @FXML
     private TextField nomeInput;
 
@@ -67,27 +77,31 @@ public class ControllerEditar implements Initializable {
         fecha();
     }
     @FXML
-    void acaoSalvar(ActionEvent event) throws SQLException {
-        Connection con = new DbConnector().getConnection();
-
-            // cria um preparedStatement
-            String sql = "insert into cursos" +
-                    " (`id`, `id-depto`, `nome`, `horas-total`, `modalidade`)" +
-                    " values (?,?,?,?,?)";
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            // preenche os valores
-            stmt.setString(1,idInput.getText());
-            stmt.setString(2,idDeptoInput.getText());
-            stmt.setString(3,nomeInput.getText());
-            stmt.setString(4,horasInput.getText());
-            stmt.setString(5,modalidadeInput.getText());
+    public void acaoSalvar(){
+        try {
+            Connection connection = DbConnector.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("UPDATE `cursos` SET"
+                    + " `id-depto` = '"+idDeptoInput.getText()+"'"
+                    + ", `nome` = '"+nomeInput.getText()+"'"
+                    + ", `horas-total` = '"+horasInput.getText()+"'"
+                    + ", `modalidade` = '"+modalidadeInput.getText()+"'"
+                    + " WHERE `cursos`.`id` = "+ControllerEditar.getId());
             stmt.execute();
             stmt.close();
-            con.close();
-        fecha();
+            connection.close();
+            fecha();
+        } catch (SQLException ex) {
+            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
+    @FXML
+    public void acaoCancelar(){
+        fecha();
+    }
+    
+            
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

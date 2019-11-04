@@ -48,8 +48,6 @@ public class TableController implements Initializable{
     @FXML
     private TableColumn<ModelTable, String> col_modalidade;
     @FXML
-    private TableColumn<ModelTable, Button> col_funcoes;
-    @FXML
     private TableColumn<ModelTable, Button> col_funcoes1;
     @FXML
     private TableColumn<ModelTable, Button> col_funcoes2;
@@ -77,6 +75,8 @@ public class TableController implements Initializable{
         criaTabela();
     }
     
+    
+    
    
     
     public void deleta(String id){
@@ -99,7 +99,7 @@ public class TableController implements Initializable{
             oblist = FXCollections.observableArrayList();
             
             while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("id"),rs.getString("id-depto"),rs.getString("nome"),rs.getString("horas-total"),rs.getString("modalidade"),new Button("INFO"),new Button("EDITAR"),new Button("DELETAR")));
+                oblist.add(new ModelTable(rs.getString("id"),rs.getString("id-depto"),rs.getString("nome"),rs.getString("horas-total"),rs.getString("modalidade"),new Button("EDITAR"),new Button("DELETAR")));
             }
             
             con.close();
@@ -115,7 +115,6 @@ public class TableController implements Initializable{
         col_nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         col_horas.setCellValueFactory(new PropertyValueFactory<>("horas"));
         col_modalidade.setCellValueFactory(new PropertyValueFactory<>("modalidade"));
-        col_funcoes.setCellValueFactory(new PropertyValueFactory<>("info"));
         col_funcoes1.setCellValueFactory(new PropertyValueFactory<>("edita"));
         col_funcoes2.setCellValueFactory(new PropertyValueFactory<>("deleta"));
         
