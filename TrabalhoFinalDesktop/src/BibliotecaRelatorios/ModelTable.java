@@ -2,25 +2,30 @@
 package BibliotecaRelatorios;
 
 import Principal.*;
-import javafx.scene.control.Button;
+import java.sql.Date;
+import javafx.scene.control.Label;
 
 public class ModelTable {
-    String id,idAlunos,idAcervo,dataEmprestimo,dataPrevDevol,dataDevolucao,multa;
+    String id,idAlunos,idAcervo;
+    Date dataEmprestimo,dataPrevDevol,dataDevolucao;
+    Double multa;
 
     
-    Button deleta;
+    Label estado;
 
-    public Button getDeleta() {
-        return deleta;
+    public Label getEstado() {
+        return estado;
     }
 
-    public void setDeleta(Button deleta) {
-        this.deleta = deleta;
+    public void setEstado(Label estado) {
+        this.estado = estado;
     }
 
     
 
-    public ModelTable(String id, String idAlunos, String idAcervo, String dataEmprestimo, String dataPrevDevol, String dataDevolucao, String multa, Button deleta){
+    
+
+    public ModelTable(String id, String idAlunos, String idAcervo, Date dataEmprestimo, Date dataPrevDevol, Date dataDevolucao, Double multa, Label estado){
         this.id = id;
         this.idAlunos = idAlunos;
         this.idAcervo = idAcervo;
@@ -28,9 +33,9 @@ public class ModelTable {
         this.dataPrevDevol = dataPrevDevol;
 	this.dataDevolucao = dataDevolucao;
         this.multa = multa;
+        this.estado=estado;
         
-        this.deleta = deleta;
-        this.deleta.setId("deleta");
+        this.estado.setId("estado");
         
         
     }
@@ -58,35 +63,35 @@ public class ModelTable {
 	this.idAcervo = idAcervo;
     }
 
-    public String getDataEmprestimo() {
+    public Date getDataEmprestimo() {
 	return dataEmprestimo;
     }
 
-    public void setDataEmprestimo(String dataEmprestimo) {
+    public void setDataEmprestimo(Date dataEmprestimo) {
 	this.dataEmprestimo = dataEmprestimo;
     }
 
-    public String getDataPrevDevol() {
+    public Date getDataPrevDevol() {
 	return dataPrevDevol;
     }
 
-    public void setDataPrevDevol(String dataPrevDevol) {
+    public void setDataPrevDevol(Date dataPrevDevol) {
 	this.dataPrevDevol = dataPrevDevol;
     }
 
-    public String getDataDevolucao() {
+    public Date getDataDevolucao() {
 	return dataDevolucao;
     }
 
-    public void setDataDevolucao(String dataDevolucao) {
+    public void setDataDevolucao(Date dataDevolucao) {
 	this.dataDevolucao = dataDevolucao;
     }
 
-    public String getMulta() {
+    public Double getMulta() {
 	return multa;
     }
 
-    public void setMulta(String multa) {
+    public void setMulta(Double multa) {
 	this.multa = multa;
     }
     

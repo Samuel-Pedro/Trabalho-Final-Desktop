@@ -24,6 +24,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import PacoteInsere.InsereMain;
+import java.sql.Date;
+import javafx.scene.control.Label;
 
 /**
  *
@@ -40,26 +42,18 @@ public class TableController implements Initializable{
     @FXML
     private TableColumn<ModelTable, Integer> col_idAcervo;
     @FXML
-    private TableColumn<ModelTable, String> col_dataEmprestimo;
+    private TableColumn<ModelTable, Date> col_dataEmprestimo;
     @FXML
-    private TableColumn<ModelTable, String> col_dataPrevDevol;
+    private TableColumn<ModelTable, Date> col_dataPrevDevol;
     @FXML
-    private TableColumn<ModelTable, String> col_dataDevolucao;
+    private TableColumn<ModelTable, Date> col_dataDevolucao;
     @FXML
-    private TableColumn<ModelTable, String> col_multa;
+    private TableColumn<ModelTable, Double> col_multa;
     
     @FXML
-    private TableColumn<ModelTable, Button> col_funcoes2;
+    private TableColumn<ModelTable, Label> col_funcoes2;
     
-    @FXML
-    private void Insere(javafx.event.ActionEvent event) {
-       InsereMain insere = new InsereMain();
-        try {
-            insere.start(new Stage());
-        } catch (Exception ex) {
-            Logger.getLogger(TableController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
     
 
     static ObservableList<ModelTable> oblist = FXCollections.observableArrayList();
@@ -84,7 +78,7 @@ public class TableController implements Initializable{
             ResultSet rs = con.createStatement().executeQuery("select * from emprestimos");
             oblist = FXCollections.observableArrayList();
             while(rs.next()){
-                oblist.add(new ModelTable(rs.getString("id"),rs.getString("id-alunos"),rs.getString("id-acervo"),rs.getString("data-emprestimo"),rs.getString("data-prev-devol"),rs.getString("data-devolucao"),rs.getString("multa"),new Button("DELETAR")));
+                oblist.add(new ModelTable(rs.getString("id"),rs.getString("id-alunos"),rs.getString("id-acervo"),rs.getDate("data-emprestimo"),rs.getDate("data-prev-devol"),rs.getDate("data-devolucao"),rs.getDouble("multa"),new Label("Algo")));
             }
             
             con.close();
